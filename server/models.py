@@ -13,7 +13,7 @@ class Author(db.Model, SerializerMixin):
     id= db.Column('id', db.Integer(), primary_key=True)
     name= db.Column('name', db.String())
     books= db.relationship('Book', backref='author')
-    categories = db.relationship('Author_Category', backref='author')
+    # categories = db.relationship('Author_Category', backref='author')
 
     def __repr__(self):
         return f"Author('{self.id}', '{self.name}')"
@@ -35,15 +35,16 @@ class Category(db.Model, SerializerMixin):
     id = db.Column(db.Integer(), primary_key=True)
     categoryName = db.Column(db.String())
     books = db.relationship('Book', backref='category')
-    categories = db.relationship('Author_Category', backref='category')
+    # categories = db.relationship('Author_Category', backref='category')
     
     def __repr__(self):
         return f"Category('{self.id}', '{self.categoryName}')"
 
 class Author_Category(db.Model, SerializerMixin):
-    __tablename__ = 'author_category'
-    author_id = db.Column(db.Integer(),db.ForeignKey('authors'))
-    category_id = db.Column(db.Integer(),db.ForeignKey('categories'))
+    __tablename__ = 'authors_categories'
+    id = db.Column(db.Integer(), primary_key=True)
+    author_id = db.Column(db.Integer(),db.ForeignKey('authors.id'))
+    category_id = db.Column(db.Integer(),db.ForeignKey('categories.id'))
     
     def __repr__(self):
         return f"Author_Category('{self.author_id}', '{self.category_id}')"
