@@ -16,7 +16,6 @@ class Author(db.Model, SerializerMixin):
     id= db.Column('id', db.Integer(), primary_key=True)
     name= db.Column('name', db.String())
     books= db.relationship('Book', backref='author')
-    # categories = db.relationship('Author_Category', backref='author')
     
     @validates('name')
     def validate_name(self, key, value):
@@ -52,7 +51,6 @@ class Category(db.Model, SerializerMixin):
     id = db.Column(db.Integer(), primary_key=True)
     categoryName = db.Column(db.String())
     books = db.relationship('Book', backref='category')
-    # categories = db.relationship('Author_Category', backref='category')
     
     def __repr__(self):
         return f"Category('{self.id}', '{self.categoryName}')"
