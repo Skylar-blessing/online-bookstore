@@ -32,7 +32,9 @@ class Book(db.Model, SerializerMixin):
     __tablename__='books'
     id= db.Column(db.Integer(),primary_key= True )
     title= db.Column(db.String())
+    cover= db.Column(db.String())
     description = db.Column(db.String())
+    price = db.Column(db.Float())
     available_copies = db.Column(db.Integer())
     author_id = db.Column(db.Integer(), db.ForeignKey('authors.id'))
     category_id = db.Column(db.Integer(), db.ForeignKey('categories.id'))   

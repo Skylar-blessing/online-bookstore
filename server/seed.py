@@ -9,6 +9,7 @@ with app.app_context():
     db.create_all()
     fake = Faker()
     
+    
     def categ():
         valid_categ = ['Adventure', 'Romance', 'SciFi', 'Biography']
         return fake.random_element(valid_categ)
@@ -37,10 +38,12 @@ with app.app_context():
     for i in range(50):
         book = Book(
             title=fake.sentence(),
+            cover=random.randint(1, 50),
             description=fake.paragraph(),
+            price=random.randint(1, 10000),
             available_copies=random.randint(0, 100),
-            author_id=author.id,
-            category_id=category.id
+            author_id=random.randint(1,50),
+            category_id=random.randint(1,50)
         )
         books.append(book)
 
