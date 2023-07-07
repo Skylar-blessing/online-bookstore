@@ -1,22 +1,23 @@
-
-import './App.css';
-import Nav from './components/Nav';
-import Search from './components/Search';
-import Itemlist from './components/Itemlist';
-import Cart from './components/Cart';
-import Categories from './components/Categories';
-
+import "./App.css";
+import ItemList from "./components/ItemList";
+import Nav from "./components/Nav";
+// import { Routes, Route } from "react-router-dom";
+import Cart from "./components/Cart";
+import Search from "./components/Search";
 function App() {
   return (
     <div className="App">
-      <h1>Book-Store</h1>
-      <Nav />
+      {/* <Nav />
+      <Routes>
+        <Route path="/home" element={<ItemList />} />
+        <Route path="/category" element={<Search />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes> */}
+      <Nav /> 
       <Search />
-      <Itemlist />
-      <Categories />
+      <ItemList />
       <Cart />
     </div>
   );
 }
-
-export default App;
+export default App
