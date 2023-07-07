@@ -38,7 +38,7 @@ with app.app_context():
     for i in range(50):
         book = Book(
             title=fake.sentence(),
-            cover=random.randint(1, 50),
+            cover=fake.image_url(),
             description=fake.paragraph(),
             price=random.randint(1, 10000),
             available_copies=random.randint(0, 100),

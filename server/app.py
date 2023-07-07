@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, make_response
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
 from flask_cors import CORS
+import traceback
 
 from models import db, Author, Book, Category, Author_Category
 
@@ -21,24 +22,25 @@ class Index(Resource):
         response_dict = {
             "message":"welcome back"
         }
-        response = make_response(response_dict, 200)
+        response = make_response(jsonify(response_dict), 200)
         
         return response
     
 api.add_resource(Index,"/")
 
+class Books(Resource):
+    def get(self):
+        books = [book.to_dict() for book in Book.query.all()]
+        return make_response(jsonify(books), 200)
+
+api.add_resource(Books, "/books")
+
 class Authors(Resource):
     def get(self):
-        author = Author.query.all()
-        print(author)
-        response= make_response(jsonify(author), 200)
-        
-        return response
-    
-api.add_resource(Authors, "/authors"
-)
+        authors = [author.to_dict() for author in Author.query.all()]
+        return make_response(jsonify(authors), 200)
 
-
+api.add_resource(Authors, "/authors")
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

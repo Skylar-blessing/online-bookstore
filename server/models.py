@@ -16,6 +16,12 @@ class Author(db.Model, SerializerMixin):
     id= db.Column('id', db.Integer(), primary_key=True)
     name= db.Column('name', db.String())
     books= db.relationship('Book', backref='author')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.name
+        }
     
     @validates('name')
     def validate_name(self, key, value):
@@ -39,6 +45,24 @@ class Book(db.Model, SerializerMixin):
     author_id = db.Column(db.Integer(), db.ForeignKey('authors.id'))
     category_id = db.Column(db.Integer(), db.ForeignKey('categories.id'))   
     
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'cover': self.cover,
+            'description': self.description,
+            'price': self.price,
+            'available_copies': self.available_copies,
+            'author': {
+                'id': self.author.id,
+                'name': self.author.name
+            },
+            'category': {
+                'id': self.category.id,
+                'categoryName': self.category.categoryName
+            }
+        }
+
     @validates('available_copies')
     def validate_available_copies(self, key, value):
         if not isinstance(value, int):
@@ -53,6 +77,12 @@ class Category(db.Model, SerializerMixin):
     id = db.Column(db.Integer(), primary_key=True)
     categoryName = db.Column(db.String())
     books = db.relationship('Book', backref='category')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'categoryName': self.categoryName
+        }
     
     def __repr__(self):
         return f"Category('{self.id}', '{self.categoryName}')"
@@ -62,6 +92,20 @@ class Author_Category(db.Model, SerializerMixin):
     id = db.Column(db.Integer(), primary_key=True)
     author_id = db.Column(db.Integer(),db.ForeignKey('authors.id'))
     category_id = db.Column(db.Integer(),db.ForeignKey('categories.id'))
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.name,
+            'author': {
+                'id': self.author.id,
+                'name': self.author.name
+            },
+            'category': {
+                'id': self.category.id,
+                'categoryName': self.category.categoryName
+            }
+        }
     
     def __repr__(self):
         return f"Author_Category('{self.author_id}', '{self.category_id}')"
