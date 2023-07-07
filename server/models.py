@@ -20,7 +20,7 @@ class Author(db.Model, SerializerMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'title': self.name
+            'name': self.name
         }
     
     @validates('name')
@@ -53,14 +53,8 @@ class Book(db.Model, SerializerMixin):
             'description': self.description,
             'price': self.price,
             'available_copies': self.available_copies,
-            'author': {
-                'id': self.author.id,
-                'name': self.author.name
-            },
-            'category': {
-                'id': self.category.id,
-                'categoryName': self.category.categoryName
-            }
+            'author_id' : self.author_id,
+            'category_id' : self.category_id
         }
 
     @validates('available_copies')
@@ -96,16 +90,9 @@ class Author_Category(db.Model, SerializerMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'title': self.name,
-            'author': {
-                'id': self.author.id,
-                'name': self.author.name
-            },
-            'category': {
-                'id': self.category.id,
-                'categoryName': self.category.categoryName
+            'author_id': self.author_id,
+            'category_id': self.category_id
             }
-        }
     
     def __repr__(self):
         return f"Author_Category('{self.author_id}', '{self.category_id}')"
