@@ -1,60 +1,53 @@
-import React, {useEffect, useState} from 'react';
-// import "./App.css";
+import React, { useEffect, useState } from 'react';
 import ItemList from "./components/ItemList";
 import Nav from "./components/Nav";
 import Category from './components/Category';
-// import { Routes, Route } from "react-router-dom";
 import Cart from "./components/Cart";
 import Search from "./components/Search";
+
 function App() {
+  const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
 
-
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  function handleSearchChange(query) {
-    setSearchQuery(query);
-  }
   useEffect(() => {
-    fetch(`http://localhost:5000/categories`)
-      .then((response) => response.json())
-      .then((data) => setFilteredItems(data))
-      .catch((error) => console.error(error));
+    fetch("http://127.0.0.1:5000/books")
+      .then(response => response.json())
+      .then(data => {
+        setItems(data);
+        setFilteredItems(data);
+      })
+      .catch(error => console.error(error));
   }, []);
 
-  const handleCategory = (e) => {
-    e.preventDefault();
-    const selectedCategory = e.target.value;
-    const filtered = filteredItems.filter(
-      (item) => item.category === selectedCategory
+  const handleSearchChange = (query) => {
+    const filteredItems = items.filter(item =>
+      item.title.toLowerCase().includes(query.toLowerCase())
     );
-    setFilteredItems(filtered);
+    setFilteredItems(filteredItems);
   };
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/books?description_like=${searchQuery}`)
-      .then((response) => response.json())
-      .then((data) => setSearchResults(data))
-      .catch((error) => console.error(error));
-  }, [searchQuery]);
-
-
+  const handleCategory = (event) => {
+    const selectedCategory = event.target.value;
+    if (selectedCategory === "") {
+      setFilteredItems(items);
+    } else {
+      const filteredItems = items.filter(item =>
+        item.category === selectedCategory
+      );
+      setFilteredItems(filteredItems);
+    }
+  };
 
   return (
     <div className="App">
-      {/* <Nav />
-      <Routes>
-        <Route path="/home" element={<ItemList />} />
-        <Route path="/category" element={<Search />} />
-        <Route path="/cart" element={<Cart />} />
-      </Routes> */}
-      <Nav /> 
+      <Nav />
       <Search onSearchChange={handleSearchChange} />
-      <Category filter={handleCategory} />
-      <ItemList result={searchResults}category={setFilteredItems}/>
-      <Cart />
       
+      <ItemList items={filteredItems} setFilteredItems={setFilteredItems} handleCategory={handleCategory} />
+
+      <Cart />
     </div>
   );
 }
-export default App
+
+export default App;

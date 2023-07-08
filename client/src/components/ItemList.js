@@ -1,106 +1,64 @@
-// import React, { useState, useEffect } from 'react';
-
-// function ItemList() {
-//   const [items, setItems] = useState([]);
-
-//   useEffect(() => {
-//     fetchItems();
-//   }, []);
-
-//   const fetchItems = async () => {
-//     try {
-//       const response = await fetch('http://127.0.0.1:5000/books');
-//       const data = await response.json();
-//       setItems(data);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-
-//   return (
-//   <div>
-//     {items.map((item) => (
-//       <div key={item.id}>{item.cover}</div>
-//     ))}
-//   </div>
-// );
-
-// }
-
-// export default ItemList;
-
-
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ItemCard from "./ItemCard";
 import Cart from "./Cart";
+import Category from "./Category";
 
-function ItemList({searchResults, setFilteredItems}) {
-  const [items, setItems] = useState([]);
+function ItemList({ items, setFilteredItems, handleCategory }) {
   const [cartItems, setCartItems] = useState([]);
-    useEffect(() => {
-    fetchItems();
-  }, []);
 
-  const fetchItems = async () => {
-    try {
-      const response = await fetch('http://127.0.0.1:5000/books');
-      const data = await response.json();
-      setItems(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  function handleAddToCart(itemId) {
+  const handleAddToCart = (itemId) => {
     const itemToAdd = items.find((item) => item.id === itemId);
     setCartItems([...cartItems, itemToAdd]);
-  }
-  function handleItemAdded(item) {
-    setItems([...items, item]);
-  }
+
+    const updatedItems = items.map((item) => {
+      if (item.id === itemId) {
+        return {
+          ...item,
+          available_copies: item.available_copies - 1,
+        };
+      }
+      return item;
+    });
+
+    setFilteredItems(updatedItems);
+  };
+
+  const handleUpdate = (itemId, updatedCopies) => {
+    const updatedItems = items.map((item) => {
+      if (item.id === itemId) {
+        return {
+          ...item,
+          available_copies: updatedCopies,
+        };
+      }
+      return item;
+    });
+
+    setFilteredItems(updatedItems);
+  };
+
   return (
     <div>
+      <Category handleCategory={handleCategory} />
       <div>
-      {searchResults.map((book) => (
-            <ItemCard
-              key={book.id}
-              title={book.title}
-              description={book.description}
-              price={book.price}
-              cover={book.cover}
-            />
-          ))}
+        {items.map((item) => (
+          <ItemCard
+            key={item.id}
+            title={item.title}
+            description={item.description}
+            price={item.price}
+            cover={item.cover}
+            inStock={item.available_copies}
+            id={item.id}
+            number={item.available_copies}
+            onAddToCart={handleAddToCart}
+            handleUpdate={handleUpdate} // Pass the handleUpdate function as a prop
+          />
+        ))}
       </div>
-      <div>
-      {setFilteredItems.map((item) => (
-        <ItemCard
-          key={item.id}
-          title={item.title}
-          description={item.description}
-          price={item.price}
-          cover={item.cover}
-          inStock={item.available_copies}
-          id={item.id}
-          number={item.inStock}
-          onAddToCart={handleAddToCart}
-        />
-      ))}
-      </div>
-      {items.map((item) => (
-        <ItemCard
-          key={item.id}
-          title={item.title}
-          description={item.description}
-          price={item.price}
-          cover={item.cover}
-          inStock={item.available_copies}
-          id={item.id}
-          number={item.inStock}
-          onAddToCart={handleAddToCart}
-        />
-      ))}
       <Cart cartItems={cartItems} setCartItems={setCartItems} />
-      
     </div>
   );
 }
+
 export default ItemList;
