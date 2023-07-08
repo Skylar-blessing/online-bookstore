@@ -1,39 +1,42 @@
 .item-card {
-    width: 300px;
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .item-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .item-description {
-    margin-bottom: 10px;
-  }
-  
-  .item-price {
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .item-image {
-    width: 30px;
-    height: 30px;
-    margin-bottom: 10px;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .item-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  
-  
+  width: 300px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.item-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.item-description {
+  margin-bottom: 10px;
+}
+
+.item-price {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.item-image {
+  width: 250px;
+  height: 250px; 
+  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
