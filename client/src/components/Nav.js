@@ -18,13 +18,13 @@ function Nav() {
         </NavLink>
         <NavLink
           className="navwords"
-          to="/category"
+          to="/books"
           exact
           activeStyle={{
             background: "Black",
           }}
         >
-          Category
+          Books
         </NavLink>
         <NavLink
           className="navwords"

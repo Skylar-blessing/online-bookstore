@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ItemList from "./components/ItemList";
 import Nav from "./components/Nav";
-import Category from './components/Category';
+
 import Cart from "./components/Cart";
 import Search from "./components/Search";
 

@@ -21,7 +21,7 @@ function Search({ onSearchChange }) {
           type="search"
           placeholder="Search your Recent Transactions"
         />
-        <button type="submit">Search</button>
+        {/* <button type="submit">Search</button> */}
       </form>
     </div>
   );

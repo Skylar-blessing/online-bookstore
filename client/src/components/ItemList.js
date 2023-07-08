@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ItemCard from "./ItemCard";
 import Cart from "./Cart";
-import Category from "./Category";
+
 import "./Itemlist.css"
 
 function ItemList({ items, setFilteredItems, handleCategory }) {
@@ -40,7 +40,7 @@ function ItemList({ items, setFilteredItems, handleCategory }) {
 
   return (
     <div>
-      <Category handleCategory={handleCategory} />
+      
       <div>
         {items.map((item) => (
           <ItemCard
