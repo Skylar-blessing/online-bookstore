@@ -1,0 +1,23 @@
+#category-form {
+    border: 1.5px solid #ccc;
+    padding: 5px;
+    height: 100px;
+  }
+  
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  select {
+    margin-top: 5px;
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+  }
+  
+  option {
+    font-size: 14px;
+  }
+  

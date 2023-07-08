@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./Category.css"
 
 function Category({ handleCategory, handleAddToCart }) {
   const [categories, setCategories] = useState([]);

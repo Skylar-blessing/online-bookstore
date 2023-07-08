@@ -1,59 +1,45 @@
 import React from 'react';
-// import { NavLink } 
-// import "./Nav.css";
+import { NavLink } from 'react-router-dom';
+import "./Nav.css"
+
 function Nav() {
-// function navigate(e) {
-//     e.preventDefault();
-//     window.history.pushState(null, "", e.target.href);
-// }
-// const linkStyles = {
-//     display: "inline-block",
-//     width: "50px",
-//     padding: "20px",
-//     margin: "0 6px 6px",
-//     background: "black",
-//     textDecoration: "none",
-//     color: "white",
-// };
-return (
+  return (
     <div>
-    {/* <nav id="navbar">
-    <NavLink
-        className="navwords"
-        to="/home"
-        exact
-        style={linkStyles}
-        activeStyle={{
+      <nav id="navbar">
+        <NavLink
+          className="navwords"
+          to="/home"
+          exact
+          activeStyle={{
             background: "Black",
-        }}
+          }}
         >
-        Home
+          Home
         </NavLink>
         <NavLink
-        className="navwords"
-        to="/category"
-        exact
-        style={linkStyles}
-        activeStyle={{
+          className="navwords"
+          to="/category"
+          exact
+          activeStyle={{
             background: "Black",
-        }}
+          }}
         >
-        Category
+          Category
         </NavLink>
         <NavLink
-        className="navwords"
-        to="/cart"
-        exact
-        style={linkStyles}
-        activeStyle={{
+          className="navwords"
+          to="/cart"
+          exact
+          activeStyle={{
             background: "Black",
             marginRight: "800px",
-        }}
+          }}
         >
-        Cart
-        </NavLink> */}
-    {/* </nav> */}
+          Cart
+        </NavLink>
+      </nav>
     </div>
-);
+  );
 }
+
 export default Nav;

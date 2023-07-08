@@ -1,0 +1,30 @@
+#search-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  input[type="search"] {
+    flex: 1;
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+  }
+  
+  button[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  button[type="submit"]:hover {
+    opacity: 0.8;
+  }
+  

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ItemCard from "./ItemCard";
 import Cart from "./Cart";
 import Category from "./Category";
+import "./Itemlist.css"
 
 function ItemList({ items, setFilteredItems, handleCategory }) {
   const [cartItems, setCartItems] = useState([]);

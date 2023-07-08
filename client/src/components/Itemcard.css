@@ -1,0 +1,35 @@
+.item-card {
+    width: 300px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .item-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .item-description {
+    margin-bottom: 10px;
+  }
+  
+  .item-price {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .item-image {
+    width: 100%;
+    height: 200px; /* Set the desired height for the images */
+    margin-bottom: 10px;
+  }
+  
+  .item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio and fill the container */
+  }
+  

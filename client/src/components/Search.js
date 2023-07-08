@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Search.css";
 
 function Search({ onSearchChange }) {
   const [formValue, setFormValue] = useState("");
