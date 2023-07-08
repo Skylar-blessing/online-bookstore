@@ -34,7 +34,7 @@ import React, { useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
 import Cart from "./Cart";
 
-function ItemList() {
+function ItemList({searchResults, setFilteredItems}) {
   const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
     useEffect(() => {
@@ -59,6 +59,32 @@ function ItemList() {
   }
   return (
     <div>
+      <div>
+      {searchResults.map((book) => (
+            <ItemCard
+              key={book.id}
+              title={book.title}
+              description={book.description}
+              price={book.price}
+              cover={book.cover}
+            />
+          ))}
+      </div>
+      <div>
+      {setFilteredItems.map((item) => (
+        <ItemCard
+          key={item.id}
+          title={item.title}
+          description={item.description}
+          price={item.price}
+          cover={item.cover}
+          inStock={item.available_copies}
+          id={item.id}
+          number={item.inStock}
+          onAddToCart={handleAddToCart}
+        />
+      ))}
+      </div>
       {items.map((item) => (
         <ItemCard
           key={item.id}
