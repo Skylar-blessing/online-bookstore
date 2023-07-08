@@ -33,24 +33,24 @@ class Books(Resource):
         books = [book.to_dict() for book in Book.query.all()]
         return make_response(jsonify(books), 200)
     
-    # def post(self):
-    #     new_book = Book(
-    #         id = request.form['id'],
-    #         title = request.form['title'],
-    #         cover = request.form['cover'],
-    #         description = request.form['description'],
-    #         price = request.form['price'],
-    #         available_copies = request.form['availabe_copies'],
-    #         author_id = request.form['author_id'],
-    #         category_id = request.form['category_id']
-    #     )
-    #     db.session.add(new_book)
-    #     db.session.commit()
+    def post(self):
+        new_book = Book(
+            id = request.form['id'],
+            title = request.form['title'],
+            cover = request.form['cover'],
+            description = request.form['description'],
+            price = request.form['price'],
+            available_copies = request.form['availabe_copies'],
+            author_id = request.form['author_id'],
+            category_id = request.form['category_id']
+        )
+        db.session.add(new_book)
+        db.session.commit()
 
-    #     response_dict = new_book.to_dict()
-    #     response = make_response(response_dict, 201)
+        response_dict = new_book.to_dict()
+        response = make_response(response_dict, 201)
 
-    #     return response
+        return response
 
 api.add_resource(Books, "/books")
 
