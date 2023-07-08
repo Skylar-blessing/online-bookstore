@@ -14,6 +14,7 @@ function ItemCard({
   const [number, setNumber] = useState(inStock);
   const [updatedItem, setUpdatedItem] = useState(null);
   const [deleted, setDeleted] = useState(false);
+  console.log(setUpdatedItem)
 
   function handleAddToCart() {
     if (number > 0) {
@@ -39,7 +40,9 @@ function ItemCard({
 
   return (
     <div id="itemcard">
-      <img className="imageitem" src={cover} alt={title} />
+      <div className="item-image">
+        <img src={cover} alt={title} />
+      </div>
       <h3 id="nameitem">{title}</h3>
       <p id="dp">{description}</p>
       <p>price: {price}</p>
@@ -47,6 +50,8 @@ function ItemCard({
       <button className="buttonItem" onClick={handleAddToCart}>
         Add to Cart
       </button>
+      <br />
+      <br />
     </div>
   );
 }

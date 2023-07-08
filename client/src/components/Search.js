@@ -3,6 +3,7 @@ import "./Search.css";
 
 function Search({ onSearchChange }) {
   const [formValue, setFormValue] = useState("");
+  console.log(formValue)
 
   function handleSearchChange(e) {
     const searchValue = e.target.value;

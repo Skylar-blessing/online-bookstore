@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ItemList from "./components/ItemList";
 import Nav from "./components/Nav";
-
-import Cart from "./components/Cart";
 import Search from "./components/Search";
 
 function App() {
@@ -44,8 +42,6 @@ function App() {
       <Search onSearchChange={handleSearchChange} />
       
       <ItemList items={filteredItems} setFilteredItems={setFilteredItems} handleCategory={handleCategory} />
-
-      <Cart />
     </div>
   );
 }
