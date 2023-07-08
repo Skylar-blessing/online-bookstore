@@ -39,24 +39,21 @@ function ItemList({ items, setFilteredItems, handleCategory }) {
   };
 
   return (
-    <div>
-      
-      <div>
-        {items.map((item) => (
-          <ItemCard
-            key={item.id}
-            title={item.title}
-            description={item.description}
-            price={item.price}
-            cover={item.cover}
-            inStock={item.available_copies}
-            id={item.id}
-            number={item.available_copies}
-            onAddToCart={handleAddToCart}
-            handleUpdate={handleUpdate} // Pass the handleUpdate function as a prop
-          />
-        ))}
-      </div>
+    <div className="item-list-container">
+      {items.map((item) => (
+        <ItemCard
+          key={item.id}
+          title={item.title}
+          description={item.description}
+          price={item.price}
+          cover={item.cover}
+          inStock={item.available_copies}
+          id={item.id}
+          number={item.available_copies}
+          onAddToCart={handleAddToCart}
+          handleUpdate={handleUpdate}
+        />
+      ))}
       <Cart cartItems={cartItems} setCartItems={setCartItems} />
     </div>
   );

@@ -1,9 +1,10 @@
 .item-list-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  grid-gap: 20px; 
+  justify-items: center; 
+  align-items: center; 
+}
   
   .item-card {
     width: 300px;

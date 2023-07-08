@@ -20,9 +20,8 @@ function Search({ onSearchChange }) {
         <input
           onChange={handleSearchChange}
           type="search"
-          placeholder="Search your Recent Transactions"
+          placeholder="Search by Title"
         />
-        {/* <button type="submit">Search</button> */}
       </form>
     </div>
   );
