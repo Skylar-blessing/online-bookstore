@@ -48,7 +48,7 @@ class Books(Resource):
         db.session.commit()
 
         response_dict = new_book.to_dict()
-        response = make_response(response_dict, 201)
+        response = make_response(jsonify(response_dict), 201)
 
         return response
 
